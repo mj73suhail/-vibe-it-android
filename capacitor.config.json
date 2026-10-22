@@ -1,0 +1,8 @@
+{
+  "appId": "com.vibeit.music",
+  "appName": "vibe.it",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101010"><title>vibe.it</title>
+<style>
+:root{--bg:#101010;--panel:#1c1c1c;--panel2:#292929;--green:#1ed760;--muted:#aaa;--white:#f8f8f8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:15px system-ui,-apple-system,Segoe UI,sans-serif;padding-bottom:100px}
+header{padding:20px 18px 10px;display:flex;align-items:center;gap:10px} .logo{width:40px;height:40px;border-radius:50%;background:var(--green);color:#111;display:grid;place-items:center;font-size:23px;font-weight:900}h1{font-size:25px;margin:0;letter-spacing:-1px} .sub{color:var(--muted);font-size:12px}
+main{padding:8px 16px 20px}.section{margin:18px 0 24px}.section h2{font-size:20px;margin:0 0 12px}.search{display:flex;gap:8px}.search input{min-width:0;flex:1;background:#fff;color:#111;border:0;border-radius:24px;padding:14px 16px;font-size:15px}.btn{border:0;border-radius:22px;padding:11px 15px;background:var(--green);color:#111;font-weight:800;cursor:pointer}.btn.dark{background:var(--panel2);color:#fff}.tabs{display:flex;gap:8px;margin:10px 0 18px;flex-wrap:wrap}.pill{border:0;border-radius:20px;padding:9px 14px;background:var(--panel2);color:white}.pill.active{background:var(--green);color:#111}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:var(--panel);border-radius:14px;padding:14px;min-width:0}.cover{height:112px;border-radius:10px;background:linear-gradient(135deg,#254e3a,#101010 70%);display:grid;place-items:center;font-size:38px;margin-bottom:10px}.card strong{display:block;overflow-wrap:anywhere}.muted{color:var(--muted);font-size:13px}.actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.actions a,.actions button{font-size:12px;text-decoration:none;border:0;border-radius:18px;padding:8px 10px;background:var(--panel2);color:white}.list{display:grid;gap:8px}.track{display:flex;gap:10px;align-items:center;background:var(--panel);padding:11px;border-radius:12px}.track .mini{width:42px;height:42px;border-radius:8px;background:#294b39;display:grid;place-items:center;font-size:20px;flex-shrink:0}.track .info{min-width:0;flex:1}.track strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.track a{color:var(--green);text-decoration:none;font-size:12px}.track button{background:transparent;border:0;color:var(--green);font-size:20px}.notice{background:#26251f;border:1px solid #4c472b;border-radius:12px;padding:12px;color:#e8e0b5;font-size:13px;line-height:1.5}.bottom{position:fixed;bottom:0;left:0;right:0;background:#171717;border-top:1px solid #333;padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;gap:10px;align-items:center;justify-content:space-around}.bottom button{background:none;border:0;color:#ddd;font-size:12px;display:grid;gap:4px;justify-items:center}.bottom span{font-size:20px}.empty{color:var(--muted);padding:14px;background:var(--panel);border-radius:12px}
+</style></head><body>
+<header><div class="logo">v</div><div><h1>vibe.it</h1><div class="sub">Your music. Your vibe.</div></div></header>
+<main>
+<div class="notice">Online music opens through official services. This starter app does not copy or download copyrighted audio. Spotify full-track playback inside third-party apps has account and API restrictions.</div>
+<div class="section"><h2>Find music</h2><div class="search"><input id="query" placeholder="Search songs or artists" autocomplete="off"><button class="btn" id="searchBtn">Search</button></div><div class="tabs"><button class="pill active" data-service="youtube">YouTube Music</button><button class="pill" data-service="spotify">Spotify</button></div><div id="results" class="empty">Search a song or artist to open it in your chosen music service.</div></div>
+<div class="section"><h2>Quick picks</h2><div class="cards">
+<div class="card"><div class="cover">♫</div><strong>Discover music</strong><div class="muted">Search songs and artists</div><div class="actions"><button onclick="document.getElementById('query').focus()">Search</button></div></div>
+<div class="card"><div class="cover">♥</div><strong>Liked Songs</strong><div class="muted">Your saved favourites</div><div class="actions"><button onclick="showView('liked')">Open likes</button></div></div>
+</div></div>
+<div class="section" id="library"><h2>Your Library</h2><div class="tabs"><button class="pill active" data-view="liked">Liked Songs</button><button class="pill" data-view="playlists">Playlists</button><button class="pill" data-view="home">Home</button></div><div id="libraryContent"></div></div>
+<div class="section"><h2>Create playlist</h2><div class="search"><input id="playlistName" placeholder="Playlist name"><button class="btn" id="createPlaylist">Create</button></div><div class="muted" style="margin-top:8px">Likes and playlist details are saved on this device.</div></div>
+</main>
+<nav class="bottom"><button onclick="showView('home')"><span>⌂</span>Home</button><button onclick="document.getElementById('query').focus()"><span>⌕</span>Search</button><button onclick="showView('liked')"><span>♥</span>Liked</button><button onclick="showView('playlists')"><span>▤</span>Library</button></nav>
+<script>
+const $=id=>document.getElementById(id);let service='youtube',view='liked';
+const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch{return d}};
+let liked=load('vibe-liked',[]),playlists=load('vibe-playlists',[]);
+function save(){localStorage.setItem('vibe-liked',JSON.stringify(liked));localStorage.setItem('vibe-playlists',JSON.stringify(playlists))}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function urlFor(q,s=service){return s==='spotify'?'https://open.spotify.com/search/'+encodeURIComponent(q):'https://music.youtube.com/search?q='+encodeURIComponent(q)}
+function search(){let q=$('query').value.trim();if(!q){$('results').innerHTML='Type a song or artist first.';return} $('results').innerHTML='<div class="card"><strong>'+esc(q)+'</strong><div class="muted">Choose an official service to listen.</div><div class="actions"><a target="_blank" rel="noopener" href="'+urlFor(q,'youtube')+'">Open YouTube Music ↗</a><a target="_blank" rel="noopener" href="'+urlFor(q,'spotify')+'">Open Spotify ↗</a><button onclick="addLikeFromSearch()">♥ Save search</button></div></div>';window.lastSearch=q}
+function addLikeFromSearch(){let q=window.lastSearch;if(!q)return;if(!liked.some(x=>x.title===q))liked.unshift({title:q,artist:'Search saved',url:urlFor(q,service)});save();renderLibrary();$('results').insertAdjacentHTML('beforeend','<div class="muted">Saved to Liked Songs on this device.</div>')}
+function toggleLike(i){const item=liked[i];if(item)liked.splice(i,1);save();renderLibrary()}
+function showView(v){view=v;document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===v));renderLibrary();$('library').scrollIntoView({behavior:'smooth',block:'start'})}
+function renderLibrary(){let el=$('libraryContent');if(view==='playlists'){if(!playlists.length){el.innerHTML='<div class="empty">No playlists yet. Create one below.</div>';return}el.innerHTML='<div class="list">'+playlists.map((p,i)=>'<div class="track"><div class="mini">▤</div><div class="info"><strong>'+esc(p.name)+'</strong><div class="muted">'+p.songs.length+' saved item(s)</div></div><button onclick="openPlaylist('+i+')">›</button><button onclick="deletePlaylist('+i+')">×</button></div>').join('')+'</div>';return}
+let items= view==='playlistSongs' ? (playlists[window.currentPlaylist]?.songs||[]) : liked;
+if(!items.length){el.innerHTML='<div class="empty">'+(view==='playlistSongs'?'This playlist is empty.':'No liked songs yet. Search a song and tap ♥ Save search.')+'</div>';return}
+el.innerHTML='<div class="list">'+items.map((x,i)=>'<div class="track"><div class="mini">♫</div><div class="info"><strong>'+esc(x.title)+'</strong><div class="muted">'+esc(x.artist||'Saved track')+'</div><a target="_blank" rel="noopener" href="'+esc(x.url||urlFor(x.title))+'">Listen on service ↗</a></div>'+(view==='playlistSongs'?'<button onclick="removeFromPlaylist('+i+')">×</button>':'<button onclick="addToPlaylist('+i+')">＋</button><button onclick="toggleLike('+i+')">♥</button>')+'</div>').join('')+'</div>'}
+function createPlaylist(){let name=$('playlistName').value.trim();if(!name)return;playlists.push({name,songs:[]});$('playlistName').value='';save();showView('playlists')}
+function addToPlaylist(i){if(!playlists.length){alert('Create a playlist first.');return}let name=prompt('Add to which playlist?\\n'+playlists.map((p,j)=>(j+1)+'. '+p.name).join('\\n'));let n=Number(name)-1;if(playlists[n]){playlists[n].songs.push(liked[i]);save();alert('Added to '+playlists[n].name)}}
+function openPlaylist(i){window.currentPlaylist=i;view='playlistSongs';renderLibrary()}
+function removeFromPlaylist(i){playlists[window.currentPlaylist].songs.splice(i,1);save();renderLibrary()}
+function deletePlaylist(i){if(confirm('Delete playlist "'+playlists[i].name+'"?')){playlists.splice(i,1);save();view='playlists';renderLibrary()}}
+$('searchBtn').onclick=search;$('query').addEventListener('keydown',e=>{if(e.key==='Enter')search()});$('createPlaylist').onclick=createPlaylist;
+document.querySelectorAll('[data-service]').forEach(b=>b.onclick=()=>{service=b.dataset.service;document.querySelectorAll('[data-service]').forEach(x=>x.classList.toggle('active',x===b));if($('query').value.trim())search()});
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));
+renderLibrary();
+</script></body></html>

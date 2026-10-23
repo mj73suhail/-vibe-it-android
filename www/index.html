@@ -89,18 +89,12 @@ function spotify(q){return 'https://open.spotify.com/search/'+encodeURIComponent
 function youtube(q){return 'https://music.youtube.com/search?q='+encodeURIComponent(q)}
 
 function searchMusic(){
- const q=$('query').value.trim();
- if(!q){$('results').innerHTML='<div class="empty">Enter a song or artist name first.</div>';return}
- $('results').innerHTML=`
- <div class="card">
-  <strong>${safe(q)}</strong>
-  <p class="muted">Choose where you want to listen.</p>
-  <div class="row">
-   <a class="link" target="_blank" rel="noopener" href="${spotify(q)}">Open Spotify ↗</a>
-   <a class="link" target="_blank" rel="noopener" href="${youtube(q)}">Open YouTube Music ↗</a>
-   <button onclick="likeSong('${encodeURIComponent(q)}')">♥ Like</button>
-  </div>
- </div>`;
+  const q=$('query').value.trim();
+  if(!q){
+    $('results').innerHTML='<div class="empty">Song name enter pannunga.</div>';
+    return;
+  }
+  $('results').innerHTML='<div class="card"><strong>'+safe(q)+'</strong><p>Listen to this song:</p><audio controls style="width:100%" src="https://freetouse.com"></audio><p><a href="'+spotify(q)+'" target="_blank">Spotify</a> | <a href="'+youtube(q)+'" target="_blank">YouTube Music</a></p><button onclick="likeSong(\''+encodeURIComponent(q)+'\')">♥ Like</button></div>';
 }
 function likeSong(encoded){
  const title=decodeURIComponent(encoded);

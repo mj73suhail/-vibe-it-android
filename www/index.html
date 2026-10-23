@@ -65,7 +65,8 @@ a.link{display:inline-block;text-decoration:none;color:#111;background:var(--gre
   <button onclick="window.scrollTo({top:0,behavior:'smooth'})">⌂<br>Home</button>
   <button onclick="document.getElementById('query').focus()">⌕<br>Search</button>
   <button onclick="showTab('liked')">♥<br>Liked</button>
-  <button onclick="showTab('playlists')">▤<br>Library</button>
+ <button onclick="showTab('playlists');document.getElementById('library').scrollIntoView({behavior:'smooth'})">▤<br>Library</button>
+  
 </nav>
 
 <script>

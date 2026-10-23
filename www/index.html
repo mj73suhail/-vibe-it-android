@@ -3,42 +3,173 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#121212">
 <title>vibe.it</title>
 <style>
-:root{--green:#2196F3;--bg:#121212;--panel:#202020;--muted:#aaa}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#fff;font-family:Arial,sans-serif;padding-bottom:90px}
-header{padding:22px 18px;display:flex;align-items:center;gap:12px}
-.logo{width:43px;height:43px;border-radius:50%;background:var(--green);color:#111;display:grid;place-items:center;font-size:28px;font-weight:bold}
-h1{margin:0;font-size:26px}h2{font-size:20px;margin:20px 0 12px}
-main{padding:0 16px}.muted{color:var(--muted);font-size:13px}
-input{width:100%;padding:14px;border:0;border-radius:25px;font-size:15px;margin-bottom:8px}
-button,a{cursor:pointer}button{border:0;border-radius:22px;padding:11px 15px;font-weight:bold;background:var(--green);color:#111}
-.secondary{background:#333;color:white}
-.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-.card{background:var(--panel);border-radius:12px;padding:14px;margin:10px 0}
-.track{display:flex;align-items:center;gap:10px;background:var(--panel);padding:12px;border-radius:10px;margin:8px 0}
-.cover{height:44px;width:44px;flex-shrink:0;border-radius:8px;background:#284d38;display:grid;place-items:center;font-size:23px}
-.info{flex:1;min-width:0}.info strong{display:block;overflow-wrap:anywhere}.info small{color:var(--muted)}
-a.link{display:inline-block;text-decoration:none;color:#111;background:var(--green);padding:8px 10px;border-radius:18px;font-size:12px;font-weight:bold;margin-top:6px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.tabs button{background:#333;color:white}.tabs button.active{background:var(--green);color:#111}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#181818;border-top:1px solid #333;display:flex;justify-content:space-around;padding:12px 5px}
-.bottom button{background:transparent;color:white;padding:5px;font-size:12px}
-.empty{background:var(--panel);padding:15px;border-radius:10px;color:var(--muted)}
-.notice{font-size:12px;color:#ddd;background:#28251c;padding:12px;border-radius:10px;line-height:1.5}
+:root {
+  --blue: #2196F3;
+  --bg: #121212;
+  --panel: #202020;
+  --muted: #aaa;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0 0 85px;
+  background: var(--bg);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+}
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #07131d;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+h1 { margin: 0; font-size: 27px; }
+h2 { font-size: 21px; margin: 22px 0 12px; }
+.muted { color: var(--muted); }
+main { padding: 0 16px; }
+.notice {
+  background: #28251c;
+  color: #ddd;
+  border-radius: 12px;
+  padding: 14px;
+  line-height: 1.5;
+  font-size: 13px;
+}
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #555;
+  border-radius: 28px;
+  background: white;
+  color: #111;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+button {
+  border: 0;
+  border-radius: 24px;
+  padding: 12px 17px;
+  background: var(--blue);
+  color: #07131d;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.secondary { background: #333; color: white; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.card {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 12px 0;
+  overflow-wrap: anywhere;
+}
+.card audio { width: 100%; margin: 12px 0; }
+.track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel);
+  padding: 12px;
+  border-radius: 12px;
+  margin: 8px 0;
+}
+.cover {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #183b59;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+}
+.info { flex: 1; min-width: 0; }
+.info strong { display: block; overflow-wrap: anywhere; }
+.info small { display: block; color: var(--muted); margin-top: 4px; }
+.link {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background: var(--blue);
+  padding: 8px 10px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 8px 5px 0 0;
+}
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.tabs button { background: #333; color: white; }
+.tabs button.active { background: var(--blue); color: #07131d; }
+.empty {
+  background: var(--panel);
+  padding: 16px;
+  border-radius: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #181818;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 4px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 5;
+}
+.bottom button {
+  background: transparent;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}
+.serviceButtons { display: flex; gap: 10px; margin: 20px 0; }
+.serviceButtons a {
+  flex: 1;
+  text-align: center;
+  padding: 14px 6px;
+  border-radius: 25px;
+  background: var(--blue);
+  color: #07131d;
+  text-decoration: none;
+  font-weight: bold;
+}
 </style>
 </head>
 <body>
 <header>
   <div class="logo">v</div>
-  <div><h1>vibe.it</h1><div class="muted">Your music. Your vibe.</div></div>
+  <div>
+    <h1>vibe.it</h1>
+    <div class="muted">Your music. Your vibe.</div>
+  </div>
 </header>
 
 <main>
-  <div class="notice">Search and listen through official music services. This app does not play or download copyrighted songs directly.</div>
+  <div class="notice">
+    Search music, preview available tracks, save liked songs and create playlists.
+    If a preview is unavailable, listen through Spotify or YouTube Music.
+  </div>
 
   <h2>Search music</h2>
   <input id="query" placeholder="Song, artist or album name">
@@ -46,138 +177,277 @@ a.link{display:inline-block;text-decoration:none;color:#111;background:var(--gre
     <button onclick="searchMusic()">Search</button>
     <button class="secondary" onclick="clearSearch()">Clear</button>
   </div>
-  <div id="results" class="empty">Search for a song or artist to get started.</div>
+  <div id="results" class="empty">Enter a song or artist to get started.</div>
 
   <h2>Your music</h2>
   <div class="tabs">
-    <button class="active" onclick="showTab('liked',this)">♥ Liked Songs</button>
-    <button onclick="showTab('playlists',this)">▤ Playlists</button>
+    <button id="likedTab" class="active" onclick="showTab('liked',this)">♥ Liked Songs</button>
+    <button id="playlistsTab" onclick="showTab('playlists',this)">▤ Playlists</button>
   </div>
   <div id="library"></div>
 
   <h2>Create playlist</h2>
   <input id="playlistName" placeholder="Enter playlist name">
   <button onclick="createPlaylist()">＋ Create playlist</button>
-  <p class="muted">Your likes and playlists are saved on this device.</p>
+  <p class="muted">Likes and playlists are saved on this device.</p>
+
+  <div class="serviceButtons">
+    <a href="https://open.spotify.com/" target="_blank" rel="noopener">🎵 Spotify</a>
+    <a href="https://music.youtube.com/" target="_blank" rel="noopener">▶ YouTube Music</a>
+  </div>
 </main>
 
 <nav class="bottom">
   <button onclick="window.scrollTo({top:0,behavior:'smooth'})">⌂<br>Home</button>
-  <button onclick="document.getElementById('query').focus()">⌕<br>Search</button>
+  <button onclick="focusSearch()">⌕<br>Search</button>
   <button onclick="showTab('liked')">♥<br>Liked</button>
- <button onclick="showTab('playlists');document.getElementById('library').scrollIntoView({behavior:'smooth'})">▤<br>Library</button>
-  
+  <button onclick="showTab('playlists');document.getElementById('library').scrollIntoView({behavior:'smooth'})">▤<br>Library</button>
 </nav>
 
 <script>
-const $=id=>document.getElementById(id);
-let liked=[],playlists=[],currentTab='liked';
+const $ = id => document.getElementById(id);
 
-try{
- liked=JSON.parse(localStorage.getItem('vibe_liked')||'[]');
- playlists=JSON.parse(localStorage.getItem('vibe_playlists')||'[]');
-}catch(e){liked=[];playlists=[]}
+let liked = [];
+let playlists = [];
+let currentTab = 'liked';
+let searchNumber = 0;
 
-function save(){
- localStorage.setItem('vibe_liked',JSON.stringify(liked));
- localStorage.setItem('vibe_playlists',JSON.stringify(playlists));
+try {
+  liked = JSON.parse(localStorage.getItem('vibe_liked') || '[]');
+  playlists = JSON.parse(localStorage.getItem('vibe_playlists') || '[]');
+  if (!Array.isArray(liked)) liked = [];
+  if (!Array.isArray(playlists)) playlists = [];
+} catch (e) {
+  liked = [];
+  playlists = [];
 }
-function safe(s){
- return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-function spotify(q){return 'https://open.spotify.com/search/'+encodeURIComponent(q)}
-function youtube(q){return 'https://music.youtube.com/search?q='+encodeURIComponent(q)}
 
-function searchMusic(){
-  const q=$('query').value.trim();
-  if(!q){
-    $('results').innerHTML='<div class="empty">Song name enter pannunga.</div>';
+function save() {
+  try {
+    localStorage.setItem('vibe_liked', JSON.stringify(liked));
+    localStorage.setItem('vibe_playlists', JSON.stringify(playlists));
+  } catch (e) {
+    alert('Could not save data on this device.');
+  }
+}
+
+function safe(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;',
+    '"':'&quot;', "'":'&#39;'
+  }[c]));
+}
+
+function spotify(q) {
+  return 'https://open.spotify.com/search/' + encodeURIComponent(q);
+}
+function youtube(q) {
+  return 'https://music.youtube.com/search?q=' + encodeURIComponent(q);
+}
+
+function serviceLinks(q) {
+  return '<a class="link" href="' + spotify(q) +
+    '" target="_blank" rel="noopener">Spotify</a>' +
+    '<a class="link" href="' + youtube(q) +
+    '" target="_blank" rel="noopener">YouTube Music</a>';
+}
+
+async function searchMusic() {
+  const q = $('query').value.trim();
+  if (!q) {
+    $('results').innerHTML = '<div class="empty">Song name enter pannunga.</div>';
     return;
   }
-  $('results').innerHTML='<div class="card"><strong>'+safe(q)+'</strong><p>Listen to this song:</p><audio controls style="width:100%" src="https://freetouse.com"></audio><p><a href="'+spotify(q)+'" target="_blank">Spotify</a> | <a href="'+youtube(q)+'" target="_blank">YouTube Music</a></p><button onclick="likeSong(\''+encodeURIComponent(q)+'\')">♥ Like</button></div>';
+
+  const thisSearch = ++searchNumber;
+  $('results').innerHTML = '<div class="empty">Searching music... please wait.</div>';
+
+  try {
+    const url = 'https://api.freetouse.com/v3/music/tracks/search?query=' +
+      encodeURIComponent(q) + '&limit=10&offset=0&order=release_date&sort=desc';
+
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Music service unavailable');
+
+    const json = await response.json();
+    if (thisSearch !== searchNumber) return;
+
+    const tracks = Array.isArray(json.data) ? json.data : [];
+    if (!tracks.length) throw new Error('No tracks returned');
+
+    $('results').innerHTML = tracks.map(track => {
+      const title = track.title || q;
+      const artists = Array.isArray(track.artists)
+        ? track.artists.map(a => a.name || '').filter(Boolean).join(', ')
+        : '';
+      const audioUrl = track.files && typeof track.files.mp3 === 'string'
+        ? track.files.mp3 : '';
+      const key = encodeURIComponent(title + (artists ? ' - ' + artists : ''));
+
+      return '<div class="card">' +
+        '<strong>' + safe(title) + '</strong>' +
+        (artists ? '<p class="muted">' + safe(artists) + '</p>' : '') +
+        (audioUrl
+          ? '<audio controls preload="none" src="' + safe(audioUrl) +
+            '">Your browser does not support audio.</audio>'
+          : '<p class="muted">Preview not available for this track.</p>') +
+        '<div>' + serviceLinks(title + ' ' + artists) + '</div>' +
+        '<div class="row"><button onclick="likeSong(\'' + key +
+          '\')">♥ Like</button></div></div>';
+    }).join('');
+  } catch (error) {
+    if (thisSearch !== searchNumber) return;
+    $('results').innerHTML =
+      '<div class="card"><strong>' + safe(q) + '</strong>' +
+      '<p class="muted">Online music search is unavailable right now. Check your internet and try again, or use the official music services below.</p>' +
+      '<div>' + serviceLinks(q) + '</div>' +
+      '<div class="row"><button onclick="likeSong(\'' +
+      encodeURIComponent(q) + '\')">♥ Save to Liked Songs</button></div></div>';
+  }
 }
-function likeSong(encoded){
- const title=decodeURIComponent(encoded);
- if(!liked.some(s=>s.title===title)){
-  liked.unshift({title:title});
-  save();renderLibrary();
- }
- $('results').insertAdjacentHTML('beforeend','<p class="muted">♥ Saved to Liked Songs.</p>');
+
+function likeSong(encoded) {
+  const title = decodeURIComponent(encoded);
+  if (!liked.some(s => s.title === title)) {
+    liked.unshift({title});
+    save();
+    renderLibrary();
+  }
 }
-function clearSearch(){
- $('query').value='';
- $('results').innerHTML='<div class="empty">Search for a song or artist to get started.</div>';
+
+function clearSearch() {
+  searchNumber++;
+  $('query').value = '';
+  $('results').innerHTML =
+    '<div class="empty">Enter a song or artist to get started.</div>';
 }
-function showTab(tab,button){
- currentTab=tab;
- document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
- if(button)button.classList.add('active');
- renderLibrary();
+
+function focusSearch() {
+  $('query').focus();
+  window.scrollTo({top:0, behavior:'smooth'});
 }
-function createPlaylist(){
- const name=$('playlistName').value.trim();
- if(!name){alert('Enter a playlist name first.');return}
- playlists.push({name:name,songs:[]});
- $('playlistName').value='';
- save();showTab('playlists');
+
+function showTab(tab, button) {
+  currentTab = tab;
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+
+  if (button) {
+    button.classList.add('active');
+  } else if (tab === 'liked') {
+    $('likedTab').classList.add('active');
+  } else if (tab === 'playlists') {
+    $('playlistsTab').classList.add('active');
+  }
+  renderLibrary();
 }
-function addToPlaylist(i){
- if(!playlists.length){alert('Create a playlist first.');return}
- const choice=prompt('Enter playlist number:\n'+playlists.map((p,i)=>(i+1)+'. '+p.name).join('\n'));
- const n=Number(choice)-1;
- if(playlists[n]){
-  playlists[n].songs.push(liked[i]);
-  save();alert('Added to '+playlists[n].name);
- }
+
+function createPlaylist() {
+  const name = $('playlistName').value.trim();
+  if (!name) {
+    alert('Enter a playlist name first.');
+    return;
+  }
+  playlists.push({name, songs:[]});
+  $('playlistName').value = '';
+  save();
+  showTab('playlists');
 }
-function renderLibrary(){
- const el=$('library');
- if(currentTab==='playlists'){
-  if(!playlists.length){el.innerHTML='<div class="empty">No playlists yet. Create one below.</div>';return}
-  el.innerHTML=playlists.map((p,i)=>`
-   <div class="track"><div class="cover">▤</div><div class="info"><strong>${safe(p.name)}</strong><small>${p.songs.length} saved songs</small></div><button onclick="openPlaylist(${i})">Open</button><button class="secondary" onclick="deletePlaylist(${i})">×</button></div>
-  `).join('');
-  return;
- }
- if(currentTab.startsWith('playlist-')){
-  const i=Number(currentTab.split('-')[1]),p=playlists[i];
-  if(!p){showTab('playlists');return}
-  el.innerHTML=`<button class="secondary" onclick="showTab('playlists')">← Back to playlists</button>`+
-   (p.songs.length?p.songs.map(s=>trackHTML(s)).join(''):'<div class="empty">This playlist is empty. Add songs from Liked Songs.</div>');
-  return;
- }
- if(!liked.length){el.innerHTML='<div class="empty">No liked songs yet. Search and tap ♥ Like.</div>';return}
- el.innerHTML=liked.map((s,i)=>`
-  <div class="track"><div class="cover">♫</div><div class="info"><strong>${safe(s.title)}</strong><a class="link" target="_blank" rel="noopener" href="${spotify(s.title)}">Spotify</a> <a class="link" target="_blank" rel="noopener" href="${youtube(s.title)}">YouTube Music</a></div><button class="secondary" onclick="addToPlaylist(${i})">＋</button><button onclick="removeLike(${i})">♥</button></div>
- `).join('');
+
+function addToPlaylist(i) {
+  if (!playlists.length) {
+    alert('Create a playlist first.');
+    return;
+  }
+  const choice = prompt('Enter playlist number:\n' +
+    playlists.map((p,i) => (i+1) + '. ' + p.name).join('\n'));
+  if (choice === null) return;
+
+  const n = Number(choice) - 1;
+  if (playlists[n]) {
+    playlists[n].songs.push(liked[i]);
+    save();
+    alert('Added to ' + playlists[n].name);
+    renderLibrary();
+  }
 }
-function trackHTML(s){
- return `<div class="track"><div class="cover">♫</div><div class="info"><strong>${safe(s.title)}</strong><a class="link" target="_blank" rel="noopener" href="${spotify(s.title)}">Spotify</a> <a class="link" target="_blank" rel="noopener" href="${youtube(s.title)}">YouTube Music</a></div></div>`;
+
+function renderLibrary() {
+  const el = $('library');
+
+  if (currentTab === 'playlists') {
+    if (!playlists.length) {
+      el.innerHTML = '<div class="empty">No playlists yet. Create one below.</div>';
+      return;
+    }
+    el.innerHTML = playlists.map((p,i) =>
+      '<div class="track"><div class="cover">▤</div>' +
+      '<div class="info"><strong>' + safe(p.name) + '</strong>' +
+      '<small>' + p.songs.length + ' saved songs</small></div>' +
+      '<button onclick="openPlaylist(' + i + ')">Open</button>' +
+      '<button class="secondary" onclick="deletePlaylist(' + i + ')">×</button></div>'
+    ).join('');
+    return;
+  }
+
+  if (currentTab.startsWith('playlist-')) {
+    const i = Number(currentTab.split('-')[1]);
+    const p = playlists[i];
+    if (!p) {
+      showTab('playlists');
+      return;
+    }
+    el.innerHTML = '<button class="secondary" onclick="showTab(\'playlists\')">← Back</button>' +
+      (p.songs.length
+        ? p.songs.map(s => trackHTML(s)).join('')
+        : '<div class="empty">This playlist is empty. Add songs from Liked Songs.</div>');
+    return;
+  }
+
+  if (!liked.length) {
+    el.innerHTML = '<div class="empty">No liked songs yet. Search and tap ♥ Like.</div>';
+    return;
+  }
+
+  el.innerHTML = liked.map((s,i) =>
+    '<div class="track"><div class="cover">♫</div>' +
+    '<div class="info"><strong>' + safe(s.title) + '</strong>' +
+    serviceLinks(s.title) + '</div>' +
+    '<button class="secondary" onclick="addToPlaylist(' + i + ')">＋</button>' +
+    '<button onclick="removeLike(' + i + ')">♥</button></div>'
+  ).join('');
 }
-function openPlaylist(i){currentTab='playlist-'+i;renderLibrary()}
-function removeLike(i){liked.splice(i,1);save();renderLibrary()}
-function deletePlaylist(i){
- if(confirm('Delete this playlist?')){playlists.splice(i,1);save();showTab('playlists')}
+
+function trackHTML(s) {
+  return '<div class="track"><div class="cover">♫</div>' +
+    '<div class="info"><strong>' + safe(s.title) + '</strong>' +
+    serviceLinks(s.title) + '</div></div>';
 }
-$('query').addEventListener('keydown',e=>{if(e.key==='Enter')searchMusic()});
+
+function openPlaylist(i) {
+  currentTab = 'playlist-' + i;
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+  renderLibrary();
+}
+
+function removeLike(i) {
+  liked.splice(i, 1);
+  save();
+  renderLibrary();
+}
+
+function deletePlaylist(i) {
+  if (confirm('Delete this playlist?')) {
+    playlists.splice(i, 1);
+    save();
+    showTab('playlists');
+  }
+}
+
+$('query').addEventListener('keydown', e => {
+  if (e.key === 'Enter') searchMusic();
+});
+
 renderLibrary();
 </script>
-
-<div style="display:flex;gap:12px;flex-wrap:wrap;margin:20px 0;">
-  <a href="https://open.spotify.com/"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="flex:1;min-width:150px;background:#1DB954;color:#000;text-align:center;padding:16px 10px;border-radius:40px;text-decoration:none;font-size:17px;font-weight:bold;">
-    🎵 Spotify
-  </a>
-
-  <a href="https://music.youtube.com/"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="flex:1;min-width:150px;background:#2196F3;color:#fff;text-align:center;padding:16px 10px;border-radius:40px;text-decoration:none;font-size:17px;font-weight:bold;">
-    ▶ YouTube Music
-  </a>
-</div>
-  
 </body>
 </html>
